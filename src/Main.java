@@ -1,5 +1,7 @@
 
-import java.math.BigInteger;
+import com.library.conversion.Convertor;
+import com.library.mathlib.Factorization;
+
 import java.util.*;
 import java.io.*;
 
@@ -11,12 +13,8 @@ public class Main {
     Main(){
         hashmap=new HashMap<>();
         scanner=new FastScanner();
-        int limit=(int)1e5;
-        for(int i=0;i<limit;i++){
-            hashmap.put(String.valueOf((int)(i*8)),true);
-        }
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Printer.out=new PrintWriter(System.out);
         //driver start
@@ -36,40 +34,16 @@ public class Main {
         Printer.out.close();
     }
 
-    void solve(){
-        String s=scanner.next();
-        boolean isEightDivisible=false;
-        final String[] ans = {"-1"};
-        hashmap.forEach((key,b)->{
-            int last=-1;
-            for(int i=0;i<key.length();i++){
-                char c=key.charAt(i);
-                last=s.indexOf(c,last+1);
-                if(last==-1){
-                    break;
-                }
-            }
-            if(last != -1){
-                ans[0] =key;
-                return;
-            }
-        });
-        isEightDivisible=(ans[0].equals("-1")==false);
-        Printer.printlnYESNO(isEightDivisible);
-        if(isEightDivisible) Printer.println(ans[0]);
+    void solve() throws Exception {
+
+        int n=scanner.nextInt();
+        long [] factors= Convertor.toLongArray(new Factorization(n).getFactors());
+        Printer.printlnArray(factors);
+
     }
 
 }
 
-class Solution{
-    static FastScanner scanner;
-    Solution(FastScanner scanner){
-        this.scanner=scanner;
-    }
-    public void solve(){
-
-    }
-}
 class FastScanner {
     BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st=new StringTokenizer("");
@@ -82,23 +56,30 @@ class FastScanner {
             }
         return st.nextToken();
     }
-
     public int nextInt() {
         return Integer.parseInt(next());
-    }
-    public int[] readIntArray(int n) {
-        int[] a=new int[n];
-        for (int i=0; i<n; i++) a[i]=nextInt();
-        return a;
-    }
-    public long[] readLongArray(int n) {
-        long[] a=new long[n];
-        for (int i=0; i<n; i++) a[i]=nextLong();
-        return a;
     }
     public long nextLong() {
         return Long.parseLong(next());
     }
+    public String nextLine() throws IOException { return br.readLine();}
+    public int [] nextIntArray(int n){
+        int [] arr=new int[n];
+        readIntArray(arr);
+        return arr;
+    }
+    public long [] nextLongArray(int n){
+        long [] arr=new long[n];
+        readLongArray(arr);
+        return arr;
+    }
+    public void readIntArray(int arr[]) {
+        for (int i=0; i<arr.length; i++) arr[i]=nextInt();
+    }
+    public void readLongArray(long arr[]) {
+        for (int i=0; i<arr.length; i++) arr[i]=nextLong();
+    }
+
 }
 class Printer{
     public static PrintWriter out;
@@ -117,9 +98,16 @@ class Printer{
     public static void printList(ArrayList<?> lst){
         lst.forEach((elem)->print(elem));
     }
-    public static void printLongArray(long []arr,int n){
-        for(int i=0;i<n;i++) print(arr[i]);
+    public static <T> void printArray(T []arr){
+        for(int i=0;i<arr.length;i++) print(arr[i]);
     }
+    public static void printArray(long []arr){
+        for(int i=0;i<arr.length;i++) print(arr[i]);
+    }
+    public static void printArray(int []arr){
+        for(int i=0;i<arr.length;i++) print(arr[i]);
+    }
+
     public static void printReject(){
         print(-1);
     }
@@ -135,7 +123,6 @@ class Printer{
         if(b) print("yes");
         else print("no");
     }
-
     public static void println(){
         out.println();
     }
@@ -155,8 +142,16 @@ class Printer{
         printList(lst);
         println();
     }
-    public static void printlnLongArray(long []arr,int n){
-        printLongArray(arr,n);
+    public static <T> void printlnArray(T []arr){
+        printArray(arr);
+        println();
+    }
+    public static void printlnArray(int []arr){
+        printArray(arr);
+        println();
+    }
+    public static void printlnArray(long []arr){
+        printArray(arr);
         println();
     }
     public static void printlnYESNO(boolean b){
@@ -176,4 +171,5 @@ class Printer{
         println();
     }
 }
+
 

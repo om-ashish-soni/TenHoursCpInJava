@@ -20,9 +20,16 @@ public class Printer{
     public static void printList(ArrayList<?> lst){
         lst.forEach((elem)->print(elem));
     }
-    public static void printLongArray(long []arr,int n){
-        for(int i=0;i<n;i++) print(arr[i]);
+    public static <T> void printArray(T []arr){
+        for(int i=0;i<arr.length;i++) print(arr[i]);
     }
+    public static void printArray(long []arr){
+        for(int i=0;i<arr.length;i++) print(arr[i]);
+    }
+    public static void printArray(int []arr){
+        for(int i=0;i<arr.length;i++) print(arr[i]);
+    }
+
     public static void printReject(){
         print(-1);
     }
@@ -38,7 +45,6 @@ public class Printer{
         if(b) print("yes");
         else print("no");
     }
-
     public static void println(){
         out.println();
     }
@@ -58,8 +64,16 @@ public class Printer{
         printList(lst);
         println();
     }
-    public static void printlnLongArray(long []arr,int n){
-        printLongArray(arr,n);
+    public static <T> void printlnArray(T []arr){
+        printArray(arr);
+        println();
+    }
+    public static void printlnArray(int []arr){
+        printArray(arr);
+        println();
+    }
+    public static void printlnArray(long []arr){
+        printArray(arr);
         println();
     }
     public static void printlnYESNO(boolean b){
@@ -79,4 +93,3 @@ public class Printer{
         println();
     }
 }
-

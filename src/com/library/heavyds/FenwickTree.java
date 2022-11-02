@@ -48,6 +48,6 @@ public class FenwickTree{
         return sum;
     }
     public void print(){
-        Printer.printlnLongArray(BIT,n);
+        Printer.printlnArray(BIT);
     }
 }
