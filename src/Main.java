@@ -1,5 +1,6 @@
 
 import com.library.conversion.Convertor;
+import com.library.mathlib.ChineseRemainder;
 import com.library.mathlib.Factorization;
 
 import java.util.*;
@@ -36,10 +37,11 @@ public class Main {
 
     void solve() throws Exception {
 
-        int n=scanner.nextInt();
-        long [] factors= Convertor.toLongArray(new Factorization(n).getFactors());
-        Printer.printlnArray(factors);
-
+        int num[] = { 3, 4, 5 };
+        int rem[] = { 2, 3, 1 };
+        ChineseRemainder cr=new ChineseRemainder(num,rem);
+        int ans=cr.get();
+        Printer.println(ans);
     }
 
 }

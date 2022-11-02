@@ -1,7 +1,8 @@
-package com.library.mathlib;
+package com.library.mathlib.moduloarithmetic;
 
 import com.library.customds.Pair;
 import com.library.io.Printer;
+import com.library.mathlib.LcmGcd;
 
 public class Modulo{
     public long mod=(long)(1e9+7);
@@ -33,7 +34,7 @@ public class Modulo{
         return ((a%mod)*(b%mod))%mod;
     }
     public long inverse(long a){
-        Pair<Long,Long> pr=LcmGcd.extendedGcd(a,mod);
+        Pair<Long,Long> pr= LcmGcd.extendedGcd(a,mod);
         long gcd=a*pr.first + mod*pr.second;
         if(gcd != 1) return -1;
         return (pr.first%mod + mod)%mod;
