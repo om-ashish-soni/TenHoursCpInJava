@@ -47,7 +47,7 @@ public class FenwickTree{
         }
         return sum;
     }
-    public void print(){
-        Printer.printlnArray(BIT);
+    public long[] getBIT(){
+        return BIT;
     }
 }
