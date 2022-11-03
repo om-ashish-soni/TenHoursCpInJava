@@ -3,15 +3,15 @@
 
 
 
+import com.bitmanip.KerninghanAlgo;
+
 import java.util.*;
 import java.io.*;
 public class Main {
 
     static Boolean isTakeTestCase=false;
-    Map<String,Boolean> hashmap;
     FastScanner scanner;
     Main(){
-        hashmap=new HashMap<>();
         scanner=new FastScanner();
     }
     public static void main(String[] args) throws Exception {
@@ -23,7 +23,7 @@ public class Main {
     void solve() throws Exception {
         Printer out=new Printer();
         int t=1;
-//        t=scanner.nextInt();
+        if(isTakeTestCase) t=scanner.nextInt();
         for(int i=0;i<t;i++){
             solve(out,i);
         }
@@ -31,34 +31,12 @@ public class Main {
     }
     void solve(Printer out,int testcase) throws Exception{
 
-        String s=scanner.next();
+        int n=0;
+        int setBits= KerninghanAlgo.setBits(n);
+        out.println(setBits);
 
-        char []arr=s.toCharArray();
-        StringBuilder converted=new StringBuilder();
-        for(char c:arr){
-            if(LangUtil.isConsonant(c)){
-                converted.append('.');
-                converted.append(LangUtil.toLowerCase(c));
-            }
-        }
-        out.println(converted.toString());
     }
-    static class LangUtil {
-        public static String vowels="aeiou";
-        public static char toLowerCase(Character c){
-            return c.toString().toLowerCase().toCharArray()[0];
-        }
-        public static char toUpperCase(Character c){
-            return c.toString().toUpperCase().toCharArray()[0];
-        }
-        public static boolean isVowel(char c){
-            c=toLowerCase(c);
-            return vowels.indexOf(c) != -1;
-        }
-        public static boolean isConsonant(char c){
-            return false==isVowel(c);
-        }
-    }
+
     static class FastScanner {
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer("");
