@@ -40,7 +40,11 @@ public class Main {
 
         int num[] = { 3, 5, 10 };
         int rem[] = { 2, 3, 1 };
-        int index= BinarySearch.lowerBound(num,11);
+        ArrayList<Integer> lst=new ArrayList<Integer>();
+        lst.add(3);
+        lst.add(5);
+        lst.add(10);
+        int index= BinarySearch.lowerBound(lst,3);
         Printer.print("index : "+index);
     }
 
