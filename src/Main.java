@@ -1,4 +1,5 @@
 
+import com.library.algo.BinarySearch;
 import com.library.conversion.Convertor;
 import com.library.mathlib.ChineseRemainder;
 import com.library.mathlib.Factorization;
@@ -37,11 +38,10 @@ public class Main {
 
     void solve() throws Exception {
 
-        int num[] = { 3, 4, 5 };
+        int num[] = { 3, 5, 10 };
         int rem[] = { 2, 3, 1 };
-        ChineseRemainder cr=new ChineseRemainder(num,rem);
-        int ans=cr.get();
-        Printer.println(ans);
+        int index= BinarySearch.lowerBound(num,11);
+        Printer.print("index : "+index);
     }
 
 }
