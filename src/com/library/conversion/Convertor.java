@@ -13,4 +13,10 @@ public class Convertor {
             return num.intValue();
         }).toArray();
     }
+    public static char toLowerCase(Character c){
+        return c.toString().toLowerCase().toCharArray()[0];
+    }
+    public static char toUpperCase(Character c){
+        return c.toString().toUpperCase().toCharArray()[0];
+    }
 }
