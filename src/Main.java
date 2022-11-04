@@ -3,8 +3,6 @@
 
 
 
-import com.bitmanip.KerninghanAlgo;
-
 import java.util.*;
 import java.io.*;
 public class Main {
@@ -30,12 +28,38 @@ public class Main {
         out.out.close();
     }
     void solve(Printer out,int testcase) throws Exception{
-
-        int n=0;
-        int setBits= KerninghanAlgo.setBits(n);
-        out.println(setBits);
-
+        int b= scanner.nextInt();
+        int g= scanner.nextInt();
+        StringBuilder s=new StringBuilder();
+        if(b>g){
+            s.append('B');
+            b--;
+        }else{
+            s.append('G');
+            g--;
+        }
+        while(g>0 && b>0){
+            char last=s.charAt(s.length()-1);
+            if(last=='G'){
+                s.append('B');
+                b--;
+            }else{
+                s.append('G');
+                g--;
+            }
+        }
+        while(g>0){
+            s.append('G');
+            g--;
+        }
+        while(b>0){
+            s.append('B');
+            b--;
+        }
+        out.println(s.toString());
     }
+
+
 
     static class FastScanner {
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
