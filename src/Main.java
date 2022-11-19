@@ -7,8 +7,9 @@ import java.util.*;
 import java.io.*;
 public class Main {
 
-    static Boolean isTakeTestCase=false;
+    static Boolean isTakeTestCase=true;
     FastScanner scanner;
+    Printer out;
     Main(){
         scanner=new FastScanner();
     }
@@ -19,7 +20,7 @@ public class Main {
 
 
     void solve() throws Exception {
-        Printer out=new Printer();
+        out=new Printer();
         int t=1;
         if(isTakeTestCase) t=scanner.nextInt();
         for(int i=0;i<t;i++){
@@ -27,39 +28,27 @@ public class Main {
         }
         out.out.close();
     }
+
     void solve(Printer out,int testcase) throws Exception{
-        int b= scanner.nextInt();
-        int g= scanner.nextInt();
-        StringBuilder s=new StringBuilder();
-        if(b>g){
-            s.append('B');
-            b--;
-        }else{
-            s.append('G');
-            g--;
+        int n=scanner.nextInt();
+        int s=scanner.nextInt();
+        int[] arr=scanner.nextIntArray(n);
+        int mx=0;
+        int sm=0;
+        for(int num:arr) {
+            mx=Math.max(mx,num);
+            sm+=num;
         }
-        while(g>0 && b>0){
-            char last=s.charAt(s.length()-1);
-            if(last=='G'){
-                s.append('B');
-                b--;
-            }else{
-                s.append('G');
-                g--;
-            }
+
+        int rem=mx*(mx+1)/2 - sm;
+        s-=rem;
+        for(int i=mx+1;;i++){
+            if(i>s) break;
+            s-=i;
         }
-        while(g>0){
-            s.append('G');
-            g--;
-        }
-        while(b>0){
-            s.append('B');
-            b--;
-        }
-        out.println(s.toString());
+        out.printlnYESNO(s==0);
+
     }
-
-
 
     static class FastScanner {
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
