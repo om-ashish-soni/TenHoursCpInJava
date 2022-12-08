@@ -3,11 +3,15 @@
 
 
 
+
+
+import com.library.ds.graph.flow.Dinic;
+
 import java.util.*;
 import java.io.*;
 public class Main {
 
-    static Boolean isTakeTestCase=true;
+    static Boolean isTakeTestCase=false;
     FastScanner scanner;
     Printer out;
     Main(){
@@ -30,25 +34,25 @@ public class Main {
     }
 
     void solve(Printer out,int testcase) throws Exception{
-        int n=scanner.nextInt();
-        int s=scanner.nextInt();
-        int[] arr=scanner.nextIntArray(n);
-        int mx=0;
-        int sm=0;
-        for(int num:arr) {
-            mx=Math.max(mx,num);
-            sm+=num;
-        }
-
-        int rem=mx*(mx+1)/2 - sm;
-        s-=rem;
-        for(int i=mx+1;;i++){
-            if(i>s) break;
-            s-=i;
-        }
-        out.printlnYESNO(s==0);
-
+        int n=6;
+        int source=0;
+        int sink=n-1;
+        Dinic dinic=new Dinic(n,source,sink);
+        dinic.addEdge(0, 1, 16);
+        dinic.addEdge(0, 2, 13);
+        dinic.addEdge(1, 2, 10);
+        dinic.addEdge(1, 3, 12);
+        dinic.addEdge(2, 1, 4);
+        dinic.addEdge(2, 4, 14);
+        dinic.addEdge(3, 2, 9);
+        dinic.addEdge(3, 5, 20);
+        dinic.addEdge(4, 3, 7);
+        dinic.addEdge(4, 5, 4);
+//        dinic.print();
+        long maxFlow=dinic.flow();
+        out.println("maxFlow : "+maxFlow);
     }
+
 
     static class FastScanner {
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
