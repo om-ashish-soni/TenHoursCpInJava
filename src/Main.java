@@ -34,23 +34,7 @@ public class Main {
     }
 
     void solve(Printer out,int testcase) throws Exception{
-        int n=6;
-        int source=0;
-        int sink=n-1;
-        Dinic dinic=new Dinic(n,source,sink);
-        dinic.addEdge(0, 1, 16);
-        dinic.addEdge(0, 2, 13);
-        dinic.addEdge(1, 2, 10);
-        dinic.addEdge(1, 3, 12);
-        dinic.addEdge(2, 1, 4);
-        dinic.addEdge(2, 4, 14);
-        dinic.addEdge(3, 2, 9);
-        dinic.addEdge(3, 5, 20);
-        dinic.addEdge(4, 3, 7);
-        dinic.addEdge(4, 5, 4);
-//        dinic.print();
-        long maxFlow=dinic.flow();
-        out.println("maxFlow : "+maxFlow);
+        Dinic.howToUse();
     }
 
 
