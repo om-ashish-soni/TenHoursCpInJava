@@ -6,6 +6,7 @@
 
 
 import com.library.ds.graph.flow.Dinic;
+import com.library.ds.graph.flow.MPM;
 
 import java.util.*;
 import java.io.*;
@@ -34,7 +35,7 @@ public class Main {
     }
 
     void solve(Printer out,int testcase) throws Exception{
-        Dinic.howToUse();
+        MPM.howToUse();
     }
 
 

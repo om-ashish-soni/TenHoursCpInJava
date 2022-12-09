@@ -105,6 +105,12 @@ public class Dinic {
     static class FlowEdge{
         public int u,v;
         long capacity=0,flow=0;
+        FlowEdge(int u,int v,long capacity,long flow){
+            this.u=u;
+            this.v=v;
+            this.capacity=capacity;
+            this.flow=flow;
+        }
         FlowEdge(int u,int v,long capacity){
             this.u=u;
             this.v=v;
