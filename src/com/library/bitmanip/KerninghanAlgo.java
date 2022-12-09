@@ -1,4 +1,4 @@
-package com.bitmanip;
+package com.library.bitmanip;
 
 public class KerninghanAlgo {
     public static int setBits(int n){
