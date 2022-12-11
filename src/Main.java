@@ -5,6 +5,8 @@
 
 
 
+import com.library.algo.BinarySearch;
+import com.library.algo.LIS;
 import com.library.ds.graph.flow.Dinic;
 import com.library.ds.graph.flow.MPM;
 
@@ -35,10 +37,45 @@ public class Main {
     }
 
     void solve(Printer out,int testcase) throws Exception{
-        MPM.howToUse();
+
+//        int [] arr={1,2,2,3,3,3};
+//        int index=BinarySearch.upperBound(arr,2,5,5);
+//        out.println(index);
+
+        long [] arr={3,2,5,8,11,12,7,10};
+
+        List<Long> lst= LIS.get(arr);
+        for(long num:lst) out.print(num);out.println();
+        out.println("done");
+
+
+//        List<Dummy> lst=new ArrayList<>();
+//        lst.add(new Dummy(1));
+//        lst.add(new Dummy(2));
+//        lst.add(new Dummy(2));
+//        lst.add(new Dummy(5));
+//        lst.add(new Dummy(5));
+//        lst.add(new Dummy(5));
+//        int index=BinarySearch.upperBound(lst,lst.get(1),4,5,new Comparator<Dummy>() {
+//            @Override
+//            public int compare(Dummy o1, Dummy o2) {
+//                if(o1.num<o2.num) return -1;
+//                if(o1.num>o2.num) return 1;
+//                return 0;
+//            }
+//        });
+//
+//        out.println(index);
+        
     }
 
-
+    static class Dummy{
+        int num=0;
+        public Dummy(){}
+        public Dummy(int num){
+            this.num=num;
+        }
+    }
     static class FastScanner {
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer("");
